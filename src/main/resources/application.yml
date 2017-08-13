@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:soccer;
+    username: sa
+    password:
+    name: soccer
+  h2:
+    console:
+      path: /h2
+      enabled: true
