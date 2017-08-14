@@ -28,12 +28,10 @@ CREATE TABLE IF NOT EXISTS matches
 ( match_id  int(10) not null AUTO_INCREMENT,
   home_team VARCHAR(25) not null,
   away_team VARCHAR(25) not null,
-  winning_team VARCHAR(25) not null,
   home_score int(2) not null,
   away_score int(2) not null,
   PRIMARY KEY (match_id),
   FOREIGN KEY (home_team) REFERENCES clubs(club_name),
-  FOREIGN KEY (away_team) REFERENCES clubs(club_name),
-  FOREIGN KEY (winning_team) REFERENCES clubs(club_name)
+  FOREIGN KEY (away_team) REFERENCES clubs(club_name)
 );
 

@@ -1,7 +1,7 @@
 spring:
   datasource:
     platform: h2
-    url: jdbc:h2:mem:soccer;
+    url: jdbc:h2:mem:soccer;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
     name: soccer
@@ -9,3 +9,10 @@ spring:
     console:
       path: /h2
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true

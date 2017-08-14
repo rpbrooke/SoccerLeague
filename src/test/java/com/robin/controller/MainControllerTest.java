@@ -1,4 +1,4 @@
-package com.robin.service;
+package com.robin.controller;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

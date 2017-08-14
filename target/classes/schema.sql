@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS league
 ( league_position int(1) not null,
   club_name VARCHAR(25) not null,
-  club_gamesplayed int(2),
-  club_wins int(2),
-  club_losses int(2),
-  club_ties int(2),
+  gamesplayed int(2),
+  wins int(2),
+  losses int(2),
+  ties int(2),
   PRIMARY KEY (club_name),
 );
 
@@ -28,12 +28,10 @@ CREATE TABLE IF NOT EXISTS matches
 ( match_id  int(10) not null AUTO_INCREMENT,
   home_team VARCHAR(25) not null,
   away_team VARCHAR(25) not null,
-  winning_team VARCHAR(25) not null,
   home_score int(2) not null,
   away_score int(2) not null,
   PRIMARY KEY (match_id),
   FOREIGN KEY (home_team) REFERENCES clubs(club_name),
-  FOREIGN KEY (away_team) REFERENCES clubs(club_name),
-  FOREIGN KEY (winning_team) REFERENCES clubs(club_name)
+  FOREIGN KEY (away_team) REFERENCES clubs(club_name)
 );
 
