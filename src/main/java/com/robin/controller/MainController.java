@@ -1,9 +1,10 @@
 package com.robin.controller;
 
-import com.robin.models.MatchDTO;
+import com.robin.models.Club;
+import com.robin.models.Match;
+import com.robin.models.Player;
 import com.robin.service.DatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by rpbro on 8/10/2017.
+ * Main Rest Controller to handle AJAX calls from front-end site.
  */
 @RestController
 @RequestMapping("/")
@@ -21,26 +22,26 @@ public class MainController
     DatabaseService dbService;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTeamPlayers", params = "teamName")
-    ResponseEntity<List<String>> getTeamPlayers(@RequestParam("teamName") String teamName) {
-       List<String> result = dbService.getTeamPlayers(teamName);
+    ResponseEntity<List<Player>> getTeamPlayers(@RequestParam("teamName") String teamName) {
+       List<Player> result = dbService.getTeamPlayers(teamName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTeams")
-    ResponseEntity<List<String>> getTeams() {
-        List<String> result = dbService.getTeams();
+    ResponseEntity<List<Club>> getTeams() {
+        List<Club> result = dbService.getTeams();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getStandings")
-    ResponseEntity<List<String>> getStandings() {
-        List<String> result = dbService.getStandings();
+    ResponseEntity<List<Club>> getStandings() {
+        List<Club> result = dbService.getStandings();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "recordMatch")
-    ResponseEntity<String> recordMatch(@RequestBody MatchDTO match ) {
-        String result = dbService.recordMatch(match);
+    ResponseEntity<List<Club>> recordMatch(@RequestBody Match match ) {
+        List<Club> result = dbService.recordMatch(match);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

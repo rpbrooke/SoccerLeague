@@ -1,6 +1,8 @@
 package com.robin.service;
 
-import com.robin.models.MatchDTO;
+import com.robin.models.Club;
+import com.robin.models.Match;
+import com.robin.models.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,20 +16,23 @@ public class DatabaseService {
 
     public DatabaseService(){}
 
-    public List<String> getTeamPlayers(String team){
-        log.info("test");
+    public List<Player> getTeamPlayers(String team){
+        log.info("getTeamPlayers");
         return null;
     }
 
-    public List<String> getTeams() {
+    public List<Club> getTeams() {
+        log.info("getTeams");
         return null;
     }
 
-    public List<String> getStandings(){
+    public List<Club> getStandings(){
+        log.info("getStandings");
         return null;
     }
 
-    public String recordMatch(MatchDTO message){
+    public List<Club> recordMatch(Match message){
+        log.info("recordMatch");
         return null;
     }
 }

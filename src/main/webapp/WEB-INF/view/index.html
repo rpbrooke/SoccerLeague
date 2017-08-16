@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 
-    <script src="resources/libs/angular-min.js"></script>
+    <script src="resources/libs/angular.min.js"></script>
 
     <script src="resources/js/controller.js"></script>
 
@@ -23,6 +23,10 @@
     </div>
     <div class="panel-body" style="height: 90%">
         <table class="table table-bordered table-hover">
+           <tr>
+            <td style="width: 50%;">Enter Team Name</td>
+            <td><input ng-model="team"></td>
+           </tr>
             <tr ng-repeat="p in players">
             <td>{{p}}</td>
             </tr>
@@ -34,6 +38,7 @@
     </div>
     <div class="panel-body" style="height: 90%">
         <table class="table table-bordered table-hover">
+            <
             <tr ng-repeat="t in teams">
                 <td>{{t}}</td>
             </tr>

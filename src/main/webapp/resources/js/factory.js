@@ -1,4 +1,4 @@
-angular.module('soccerLeague').factory("Factory", Factory);
+angular.module('soccerLeague').factory('Factory', ['$http', Factory]);
 
 function Factory($http){
     "use strict";

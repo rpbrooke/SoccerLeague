@@ -1,14 +1,14 @@
-angular.module('soccerLeague').controller("controller", controller);
+angular.module('soccerLeague').controller('Controller', ['$scope', '$log', 'Factory', Controller]);
 
-function controller($scope, $log, Factory) {
+function Controller($scope, $log, Factory) {
     "use strict";
 //rest of controller and model
     $scope.players=[];
     $scope.teams=[];
-    $scope.standing=[]
+    $scope.standing=[];
 
 
-    //function match
+    function match(){}
 
 
 

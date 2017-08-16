@@ -3,65 +3,92 @@ package com.robin.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Entity Class for Match table in relational database.
+ * @param Club homeClub
+ * @param Club awayClub
+ * @param int homeScore
+ * @param int awayScore
+ *
+ */
+
 @Entity
-@Table(name = "matches")
+@Table(name = "match")
 public class Match {
 
-    private Integer matchId;
-    private String homeTeam;
-    private String awayTeam;
-    private Integer homeScore;
-    private Integer awayScore;
-
+    //Primary key value is auto-generated.
     @Id
     @NotNull
     @GeneratedValue
     @Column(name = "match_id", unique = true)
-    public Integer getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(Integer matchId) {
-        this.matchId = matchId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "club_name")
-    public String getHomeTeam() {
-        return homeTeam;
-    }
-
-    public void setHomeTeam(String homeTeam) {
-        this.homeTeam = homeTeam;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "club_name")
-    public String getAwayTeam() {
-        return awayTeam;
-    }
-
-    public void setAwayTeam(String awayTeam) {
-        this.awayTeam = awayTeam;
-    }
+    private int matchId;
 
     @NotNull
     @Column(name = "home_score")
-    public Integer getHomeScore() {
+    private int homeScore;
+    @NotNull
+    @Column(name = "away_score")
+    private int awayScore;
+
+    //Relationships with other Entity Classes.
+    @ManyToOne
+    @JoinColumn(name = "club_id", insertable = false, updatable = false)
+    private Club homeClub;
+    @ManyToOne
+    @JoinColumn(name = "club_id", insertable = false, updatable = false)
+    private Club awayClub;
+
+
+    public Match(Club homeClub, Club awayClub, int homeScore, int awayScore) {
+        this.homeClub = homeClub;
+        this.awayClub = awayClub;
+        this.homeScore = homeScore;
+        this.awayScore = awayScore;
+    }
+
+    public Match() {}
+
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
+    }
+
+   
+    public Club getHomeClub() {
+        return homeClub;
+    }
+
+    public void setHomeClub(Club homeClub) {
+        this.homeClub = homeClub;
+    }
+
+
+    public Club getAwayClub() {
+        return awayClub;
+    }
+
+    public void setAwayClub(Club awayClub) {
+        this.awayClub = awayClub;
+    }
+
+
+    public int getHomeScore() {
         return homeScore;
     }
 
-    public void setHomeScore(Integer homeScore) {
+    public void setHomeScore(int homeScore) {
         this.homeScore = homeScore;
     }
 
-    @NotNull
-    @Column(name = "away_score")
-    public Integer getAwayScore() {
+
+    public int getAwayScore() {
         return awayScore;
     }
 
-    public void setAwayScore(Integer awayScore) {
+    public void setAwayScore(int awayScore) {
         this.awayScore = awayScore;
     }
 }

@@ -6,6 +6,11 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+
+/**
+ * Spring Java Configuration file for configuring View of Spring Boot Application.
+ */
+
 @Configuration
 @EnableWebMvc
 public class ViewConfig extends WebMvcConfigurerAdapter{
@@ -20,7 +25,8 @@ public class ViewConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry){
-        super.addViewControllers(registry);
+        System.out.println("Hello view controller");
+        //super.addViewControllers(registry);
         registry.addViewController("/").setViewName("index");
     }
 
