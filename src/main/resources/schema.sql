@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS club
   wins int(2) not null,
   losses int(2) not null,
   ties int(2) not null,
-  PRIMARY KEY (club_id),
+  PRIMARY KEY (club_id)
 );
 
 CREATE TABLE IF NOT EXISTS player

@@ -32,10 +32,10 @@ public class Match {
 
     //Relationships with other Entity Classes.
     @ManyToOne
-    @JoinColumn(name = "club_id", insertable = false, updatable = false)
+    @JoinColumn(name = "club_id", referencedColumnName = "club_id")
     private Club homeClub;
     @ManyToOne
-    @JoinColumn(name = "club_id", insertable = false, updatable = false)
+    @JoinColumn(name = "club_id", referencedColumnName = "club_id")
     private Club awayClub;
 
 

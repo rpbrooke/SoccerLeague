@@ -26,14 +26,14 @@ public class ViewConfig extends WebMvcConfigurerAdapter{
     @Override
     public void addViewControllers(ViewControllerRegistry registry){
         System.out.println("Hello view controller");
-        //super.addViewControllers(registry);
+        super.addViewControllers(registry);
         registry.addViewController("/").setViewName("index");
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry){
-        registry.addResourceHandler("/webapp/**").addResourceLocations("/webapp/WEB-INF");
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry){
+//        registry.addResourceHandler("/webapp/**").addResourceLocations("/webapp/WEB-INF");
+//    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){

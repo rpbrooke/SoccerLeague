@@ -10,13 +10,17 @@
 
     <script src="resources/libs/angular.min.js"></script>
 
+    <script src="resources/js/module.js"></script>
+
     <script src="resources/js/controller.js"></script>
+
+    <script src="resources/js/factory.js"></script>
 
 </head>
 
 <body>
 
-<div ng-app="soccerLeague" ng-controller="controller">
+<div ng-app="soccerLeague" ng-controller="Controller">
 
     <div class="panel-heading" style="height: 7%">
         <h4>Players</h4>
@@ -38,7 +42,6 @@
     </div>
     <div class="panel-body" style="height: 90%">
         <table class="table table-bordered table-hover">
-            <
             <tr ng-repeat="t in teams">
                 <td>{{t}}</td>
             </tr>
