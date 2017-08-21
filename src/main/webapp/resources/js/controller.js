@@ -8,10 +8,11 @@ function Controller($scope, $log, Factory) {
     $scope.standing=[];
 
 
-    function match(){}
+   // function match(){}
 
 
-
+$scope.retrieveTeamPlayers = function(){
+	$scope.players=[];
     Factory.retrieveTeamPlayers($scope.team).then(
         function mySuccess(response) {
             angular.forEach(response.data, function(value){
@@ -21,7 +22,10 @@ function Controller($scope, $log, Factory) {
         $log.error(response.data);
         $scope.players.push(response.statusText);
     });
+}
 
+$scope.retrieveTeams = function(){
+    $scope.teams=[];
     Factory.retrieveTeams().then(
         function mySuccess(response) {
             angular.forEach(response.data, function(value){
@@ -31,7 +35,10 @@ function Controller($scope, $log, Factory) {
         $log.error(response.data);
         $scope.teams.push(response.statusText);
         });
+}
 
+$scope.retrieveStandings = function(){
+	  $scope.standing=[];
     Factory.retrieveStandings().then(
         function mySuccess(response) {
             angular.forEach(response.data, function(value){
@@ -41,15 +48,15 @@ function Controller($scope, $log, Factory) {
         $log.error(response.data);
         $scope.standing.push(response.statusText);
         });
-
-    Factory.addMatch(new Match(
-
-        )).then(
-        function mySuccess(response) {
-            $scope.matchResponse = response.data;
-        }).catch( function myError(response) {
-        $log.error(response.data);
-            $scope.matchResponse = response.statusText;
-        });
+}
+//    Factory.addMatch(new Match(
+//
+//        )).then(
+//        function mySuccess(response) {
+//            $scope.matchResponse = response.data;
+//        }).catch( function myError(response) {
+//        $log.error(response.data);
+//            $scope.matchResponse = response.statusText;
+//        });
 
 }

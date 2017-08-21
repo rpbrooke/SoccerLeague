@@ -17,8 +17,8 @@ INSERT INTO player (player_name, player_number, club_id) VALUES
 
 
 
-INSERT INTO match(home_team, away_team, home_score, away_score) VALUES
-  ('Arsenal','Chelsea',2,0),
-  ('Chelsea', 'Cloud9', 1,2),
-  ('TeamSoloMid','Chelsea',1,0),
-  ('SKTelecom', 'Cloud9', 0,2);
+INSERT INTO game(home_id, away_id, home_score, away_score) VALUES
+  ('1','2',2,0),
+  ('2', '4', 1,2),
+  ('3','2',1,0),
+  ('3', '4', 0,2);

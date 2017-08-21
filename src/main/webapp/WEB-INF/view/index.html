@@ -2,72 +2,98 @@
 <html>
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <title>SoccerLeague</title>
+<title>SoccerLeague</title>
 
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 
-    <script src="resources/libs/angular.min.js"></script>
+<script src="resources/libs/angular.min.js"></script>
 
-    <script src="resources/js/module.js"></script>
+<script src="resources/js/module.js"></script>
 
-    <script src="resources/js/controller.js"></script>
+<script src="resources/js/controller.js"></script>
 
-    <script src="resources/js/factory.js"></script>
+<script src="resources/js/factory.js"></script>
 
 </head>
 
 <body>
 
-<div ng-app="soccerLeague" ng-controller="Controller">
+	<div ng-app="soccerLeague" ng-controller="Controller">
 
-    <div class="panel-heading" style="height: 7%">
-        <h4>Players</h4>
-    </div>
-    <div class="panel-body" style="height: 90%">
-        <table class="table table-bordered table-hover">
-           <tr>
-            <td style="width: 50%;">Enter Team Name</td>
-            <td><input ng-model="team"></td>
-           </tr>
-            <tr ng-repeat="p in players">
-            <td>{{p}}</td>
-            </tr>
-        </table>
-    </div>
+		<div class="panel-heading" style="height: 7%; background-color: blue; color: white;">
+			<h4>Players</h4>
+		</div>
+		<div class="panel-body" style="height: 90%">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<td style="width: 50%;">Enter Team Name</td>
+					<td><input ng-model="team">
+						<button ng-click="retrieveTeamPlayers()">Update</button></td>
+				</tr>
+				<tr>
+				<th>Player Name</th>
+					<th>Player Number</th>
+				</tr>
+				<tr ng-repeat="p in players">
+					<td>{{p.playerName}}</td>
+					<td>{{p.playerNumber}}</td>
+				</tr>
+			</table>
+		</div>
 
-    <div class="panel-heading" style="height: 7%">
-        <h4>Teams</h4>
-    </div>
-    <div class="panel-body" style="height: 90%">
-        <table class="table table-bordered table-hover">
-            <tr ng-repeat="t in teams">
-                <td>{{t}}</td>
-            </tr>
-        </table>
-    </div>
+		<div class="panel-heading" style="height: 7%; background-color: green; color: white;">
+				<h4>Teams</h4>
+		</div>
+		<div class="panel-body" style="height: 90%">
+			<table ng-init="retrieveTeams()" class="table table-bordered table-hover">
+				<tr>
+					<th>Club Name</th>
+					<th>League Position</th>
+					<th>Wins</th>
+					<th>Losses</th>
+					<th>Ties</th>
+					<th>Games Played</th>
+				</tr>
+				<tr ng-repeat="t in teams">
+					<td>{{t.clubName}}</td>
+					<td>{{t.position}}</td>
+					<td>{{t.wins}}</td>
+					<td>{{t.losses}}</td>
+					<td>{{t.ties}}</td>
+					<td>{{t.games}}</td>
+				</tr>
+			</table>
+		</div>
 
-    <div class="panel-heading" style="height: 7%">
-        <h4>Standing</h4>
-    </div>
-    <div class="panel-body" style="height: 90%">
-        <table class="table table-bordered table-hover">
-            <tr ng-repeat="t in standing">
-                <td>{{t}}</td>
-            </tr>
-        </table>
-    </div>
+		<div class="panel-heading" style="height: 7%; background-color: red; color: white;">
+			<h4>Standing</h4>
+		</div>
+		<div class="panel-body" style="height: 90%">
+			<table ng-init="retrieveStandings()" class="table table-bordered table-hover">
+			<tr>
+					<th>League Position</th>
+					<th>Club Name</th>
+					<th>Games Played</th>
+			</tr>
+				<tr ng-repeat="t in standing">
+					<td>{{t.position}}</td>
+					<td>{{t.clubName}}</td>
+					<td>{{t.games}}</td>
+				</tr>
+			</table>
+		</div>
 
-    <div class="panel-heading" style="height: 7%">
-        <h4>Add Match</h4>
-    </div>
-    <div class="panel-body" style="height: 90%">
-        <textarea ng-model="matchResponse"></textarea>
-    </div>
+		<div class="panel-heading" style="height: 7%">
+			<h4>Add Match</h4>
+		</div>
+		<div class="panel-body" style="height: 90%">
+			<textarea ng-model="matchResponse"></textarea>
+		</div>
 
 
-</div>
+	</div>
 
 </body>
 

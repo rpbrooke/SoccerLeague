@@ -1,10 +1,13 @@
 package com.robin.service;
 
-import com.robin.models.Club;
-import com.robin.models.Match;
-import com.robin.models.Player;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.robin.models.entity.Club;
+import com.robin.models.entity.Match;
+import com.robin.models.entity.Player;
+import com.robin.models.repository.ClubDao;
+import com.robin.models.repository.MatchDao;
+import com.robin.models.repository.PlayerDao;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,27 +15,35 @@ import java.util.List;
 @Service
 public class DatabaseService {
 
-    private static final Logger log = LoggerFactory.getLogger(DatabaseService.class);
-
-    public DatabaseService(){}
+    @Autowired
+    PlayerDao playerDao;
+    
+    @Autowired
+    MatchDao matchDao;
+    
+    @Autowired
+    ClubDao clubDao;
+	
+	public DatabaseService(){}
 
     public List<Player> getTeamPlayers(String team){
-        log.info("getTeamPlayers");
-        return null;
+        System.out.println("getTeamPlayers");
+        Club club = clubDao.findByClubName(team);
+        return club.getPlayers();
     }
 
     public List<Club> getTeams() {
-        log.info("getTeams");
-        return null;
+        System.out.println("getTeams");
+        return clubDao.findAll();
     }
 
     public List<Club> getStandings(){
-        log.info("getStandings");
-        return null;
+        System.out.println("getStandings");
+        return clubDao.findAllByOrderByPositionAsc();
     }
 
     public List<Club> recordMatch(Match message){
-        log.info("recordMatch");
+        System.out.println("recordMatch");
         return null;
     }
 }
