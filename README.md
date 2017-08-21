@@ -1,7 +1,6 @@
-# SoccerLeague
-Java Spring Hibernate H2 Project
+# An exercise in developing a Java Spring Boot Application with Hibernate and AngularJS
 
-The project's goal was to better understand Spring, JPA, Hibernate and AngularJS and how they could be brought together to develop an interactive website backed by a REST Web Service that interacts with a database. 
+The project's goal was to better understand Spring, JPA, Hibernate and AngularJS and how they could be brought together to develop to deliver an interactive website backed by a REST Web Service that connects with a database.
 
 While Hibernate is the chosen Object-relational Mapping tool for this project, the design is localize
 its usage to a Spring java configuration file for creating the SessionFactory using Hibernate's LocalSessionFactoryBean.
