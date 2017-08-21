@@ -29,8 +29,10 @@
 			<table class="table table-bordered table-hover">
 				<tr>
 					<td style="width: 50%;">Enter Team Name</td>
-					<td><input ng-model="team">
-						<button ng-click="retrieveTeamPlayers()">Update</button></td>
+					<td>
+						<input ng-model="team">
+						<button ng-click="retrieveTeamPlayers()">Update</button>
+					</td>
 				</tr>
 				<tr>
 				<th>Player Name</th>
@@ -89,6 +91,13 @@
 			<h4>Add Match</h4>
 		</div>
 		<div class="panel-body" style="height: 90%">
+			<tr>
+				<td>Home Club:<input ng-model="homeClub"></td>
+				<td>Away Club:<input ng-model="awayClub"></td>
+				<td>Home Score:<input ng-model="homeScore"></td>
+				<td>Away Score:<input ng-model="awayScore"></td>
+			</tr>
+			<button ng-click="retrieveTeamPlayers()">Update</button>
 			<textarea ng-model="matchResponse"></textarea>
 		</div>
 

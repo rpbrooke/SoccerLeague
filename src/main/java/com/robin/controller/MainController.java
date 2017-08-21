@@ -1,5 +1,6 @@
 package com.robin.controller;
 
+import com.robin.models.dto.MatchDTO;
 import com.robin.models.entity.Club;
 import com.robin.models.entity.Match;
 import com.robin.models.entity.Player;
@@ -41,8 +42,8 @@ public class MainController
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/recordMatch")
-    ResponseEntity<List<Club>> recordMatch(@RequestBody Match match ) {
-        List<Club> result = dbService.recordMatch(match);
+    ResponseEntity<String> recordMatch(@RequestBody MatchDTO match ) {
+        String result = dbService.recordMatch(match);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

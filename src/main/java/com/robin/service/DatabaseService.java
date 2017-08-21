@@ -1,6 +1,7 @@
 package com.robin.service;
 
 import com.robin.models.entity.Club;
+import com.robin.models.dto.MatchDTO;
 import com.robin.models.entity.Match;
 import com.robin.models.entity.Player;
 import com.robin.models.repository.ClubDao;
@@ -42,8 +43,12 @@ public class DatabaseService {
         return clubDao.findAllByOrderByPositionAsc();
     }
 
-    public List<Club> recordMatch(Match message){
+    public String recordMatch(MatchDTO message){
         System.out.println("recordMatch");
-        return null;
+        Club homeClub = clubDao.findByClubName(message.getHomeClub());
+        Club awayClub = clubDao.findByClubName(message.getHomeClub());
+        Match match = new Match(homeClub, awayClub, message.getHomeScore(), message.getAwayScore());
+        matchDao.save(match);
+        return "Match successfully added.";
     }
 }
