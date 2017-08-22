@@ -10,9 +10,7 @@ import java.util.List;
 
 /**
  * Entity Class for Club table in relational database.
- * @param String clubName
- * @param List<Player> players
- *
+ * @parm clubName
  */
 
 
@@ -43,8 +41,8 @@ public class Club {
     @Column(name = "ties")
     private int ties;
     @NotNull
-    @Column(name = "league_position")
-    private int position;
+    @Column(name = "points")
+    private int points;
 
     // Relationships with other Entity Classes.
     @OneToMany(mappedBy = "club")
@@ -57,16 +55,8 @@ public class Club {
     @JsonManagedReference
     private List<Match> awayGames;
 
-    public Club(String clubName, int games, int wins, int losses, int ties, int position, List<Player> players, List<Match> homeGames, List<Match> awayGames) {
+    public Club(String clubName) {
         this.clubName = clubName;
-        this.games = games;
-        this.wins = wins;
-        this.losses = losses;
-        this.ties = ties;
-        this.position = position;
-        this.players = players;
-        this.homeGames = homeGames;
-        this.awayGames = awayGames;
     }
 
     public Club (){}
@@ -119,12 +109,12 @@ public class Club {
         this.ties = ties;
     }
 
-    public int getPosition() {
-        return position;
+    public int getPoints() {
+        return points;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public List<Player> getPlayers() {
@@ -150,4 +140,25 @@ public class Club {
     public void setAwayGames(List<Match> awayGames) {
         this.awayGames = awayGames;
     }
+
+    public void addGame(){
+        setGames(getGames()+1);
+    }
+
+    public void addWin(){
+        addGame();
+        setWins(getWins()+1);
+        setPoints(getPoints()+3);
+    }
+    public void addLoss(){
+        addGame();
+        setLosses(getLosses()+1);
+    }
+
+    public void addTie(){
+        addGame();
+        setTies(getTies()+1);
+        setPoints(getPoints()+1);
+    }
+
 }

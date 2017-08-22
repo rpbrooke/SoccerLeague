@@ -52,7 +52,7 @@
 			<table ng-init="retrieveTeams()" class="table table-bordered table-hover">
 				<tr>
 					<th>Club Name</th>
-					<th>League Position</th>
+					<th>Total Points</th>
 					<th>Wins</th>
 					<th>Losses</th>
 					<th>Ties</th>
@@ -60,7 +60,7 @@
 				</tr>
 				<tr ng-repeat="t in teams">
 					<td>{{t.clubName}}</td>
-					<td>{{t.position}}</td>
+					<td>{{t.points}}</td>
 					<td>{{t.wins}}</td>
 					<td>{{t.losses}}</td>
 					<td>{{t.ties}}</td>
@@ -75,12 +75,12 @@
 		<div class="panel-body" style="height: 90%">
 			<table ng-init="retrieveStandings()" class="table table-bordered table-hover">
 			<tr>
-					<th>League Position</th>
+					<th>Total Points</th>
 					<th>Club Name</th>
 					<th>Games Played</th>
 			</tr>
 				<tr ng-repeat="t in standing">
-					<td>{{t.position}}</td>
+					<td>{{t.points}}</td>
 					<td>{{t.clubName}}</td>
 					<td>{{t.games}}</td>
 				</tr>
@@ -97,7 +97,7 @@
 				<td>Home Score:<input ng-model="homeScore"></td>
 				<td>Away Score:<input ng-model="awayScore"></td>
 			</tr>
-			<button ng-click="retrieveTeamPlayers()">Update</button>
+			<button ng-click="addMatch()">Add Match</button>
 			<textarea ng-model="matchResponse"></textarea>
 		</div>
 

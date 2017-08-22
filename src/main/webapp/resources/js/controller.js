@@ -7,13 +7,6 @@ function Controller($scope, $log, Factory) {
     $scope.teams=[];
     $scope.standing=[];
 
-    function match(homeClub, awayClub, homeScore, awayScore){
-        this.homeClub = homeClub;
-        this.awayClub = awayClub;
-        this.homeScore = homeScore;
-        this.awayScore = awayScore;
-    }
-
 
 $scope.retrieveTeamPlayers = function(){
 	$scope.players=[];
@@ -54,14 +47,24 @@ $scope.retrieveStandings = function(){
         });
 }
 $scope.addMatch = function () {
-    Factory.addMatch(new match($scope.homeClub, $scope.awayClub,
-        $scope.homeScore, $scope.awayScore)
-    ).then(
+    var match = {
+        homeClub : $scope.homeClub,
+        awayClub : $scope.awayClub,
+        homeScore : $scope.homeScore,
+        awayScore : $scope.awayScore};
+    Factory.addMatch(match).then(
         function mySuccess(response) {
-            $scope.matchResponse = response.data;
+            $scope.matchResponse = response.data.message;
         }).catch(function myError(response) {
+            $log.info(response);
         $log.error(response.data);
-        $scope.matchResponse = response.statusText;
+        $scope.matchResponse = response.data;
     });
+    $scope.homeClub = "";
+    $scope.awayClub = "";
+    $scope.homeScore = "";
+    $scope.awayScore = "";
+    $scope.retrieveTeams();
+    $scope.retrieveStandings();
 }
 }

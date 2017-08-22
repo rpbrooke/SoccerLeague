@@ -22,7 +22,6 @@ public class Match {
     //Primary key value is auto-generated.
     @Id
     @JsonIgnore
-    @NotNull
     @GeneratedValue
     @Column(name = "match_id", unique = true)
     private int matchId;

@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Main Rest Controller to handle AJAX calls from front-end site.
@@ -42,9 +44,10 @@ public class MainController
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/recordMatch")
-    ResponseEntity<String> recordMatch(@RequestBody MatchDTO match ) {
+    ResponseEntity<Map> recordMatch(@RequestBody MatchDTO match ) {
         String result = dbService.recordMatch(match);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        Map map = Collections.singletonMap("message", result);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
 //    public String index(){

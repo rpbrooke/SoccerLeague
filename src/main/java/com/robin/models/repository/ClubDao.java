@@ -12,11 +12,11 @@ import java.util.List;
 public interface ClubDao extends CrudRepository<Club, Integer> {
 
     public List<Club> findAll();
-    public List<Club> findAllByOrderByPositionAsc();
+    public List<Club> findAllByOrderByPointsDesc();
     public Club findByClubId(int clubId);
     public Club findByClubName(String clubName);
     public List<Club> findByGames(int games);
-    public List<Club> findByPosition(int position);
+    public List<Club> findByPoints(int points);
     public List<Club> findByWins(int wins);
     public List<Club> findByLosses(int losses);
     public List<Club> findByTies(int ties);

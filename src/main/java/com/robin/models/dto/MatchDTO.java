@@ -6,13 +6,6 @@ public class MatchDTO {
     private int homeScore;
     private int awayScore;
 
-    public MatchDTO(String homeClub, String awayClub, int homeScore, int awayScore) {
-        this.homeClub = homeClub;
-        this.awayClub = awayClub;
-        this.homeScore = homeScore;
-        this.awayScore = awayScore;
-    }
-
     public String getHomeClub() {
         return homeClub;
     }

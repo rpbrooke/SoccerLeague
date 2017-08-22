@@ -18,16 +18,17 @@ public class DatabaseService {
 
     @Autowired
     PlayerDao playerDao;
-    
+
     @Autowired
     MatchDao matchDao;
-    
+
     @Autowired
     ClubDao clubDao;
-	
-	public DatabaseService(){}
 
-    public List<Player> getTeamPlayers(String team){
+    public DatabaseService() {
+    }
+
+    public List<Player> getTeamPlayers(String team) {
         System.out.println("getTeamPlayers");
         Club club = clubDao.findByClubName(team);
         return club.getPlayers();
@@ -38,17 +39,35 @@ public class DatabaseService {
         return clubDao.findAll();
     }
 
-    public List<Club> getStandings(){
+    public List<Club> getStandings() {
         System.out.println("getStandings");
-        return clubDao.findAllByOrderByPositionAsc();
+        return clubDao.findAllByOrderByPointsDesc();
     }
 
-    public String recordMatch(MatchDTO message){
+    public String recordMatch(MatchDTO message) {
         System.out.println("recordMatch");
         Club homeClub = clubDao.findByClubName(message.getHomeClub());
-        Club awayClub = clubDao.findByClubName(message.getHomeClub());
+        Club awayClub = clubDao.findByClubName(message.getAwayClub());
         Match match = new Match(homeClub, awayClub, message.getHomeScore(), message.getAwayScore());
         matchDao.save(match);
-        return "Match successfully added.";
+        updateClubs(homeClub, awayClub, message.getHomeScore(), message.getAwayScore());
+        return "Match has been successfully added.";
     }
+
+    private void updateClubs(Club homeClub, Club awayClub, int homeScore, int awayScore) {
+        int result = Integer.compare(homeScore, awayScore);
+        if (result == 0) {
+            homeClub.addTie();
+            awayClub.addTie();
+        } else if (result < 0) {
+            homeClub.addLoss();
+            awayClub.addWin();
+        } else {
+            homeClub.addWin();
+            awayClub.addLoss();
+        }
+        clubDao.save(homeClub);
+        clubDao.save(awayClub);
+    }
+
 }
