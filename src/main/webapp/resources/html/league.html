@@ -1,0 +1,25 @@
+<div class="panel-heading"
+	style="height: 7%; background-color: red; color: white;">
+	<h4>Standing</h4>
+</div>
+<div class="panel-body" style="height: 90%">
+	<table ng-init="retrieveStandings()"
+		class="table table-bordered table-hover">
+		<tr>
+			<th>Club Name</th>
+			<th>Total Points</th>
+			<th>Wins</th>
+			<th>Losses</th>
+			<th>Ties</th>
+			<th>Games Played</th>
+		</tr>
+		<tr ng-repeat="t in standing">
+			<td>{{t.clubName}}</td>
+			<td>{{t.points}}</td>
+			<td>{{t.wins}}</td>
+			<td>{{t.losses}}</td>
+			<td>{{t.ties}}</td>
+			<td>{{t.games}}</td>
+		</tr>
+	</table>
+</div>

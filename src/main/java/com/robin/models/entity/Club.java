@@ -55,8 +55,14 @@ public class Club {
     @JsonManagedReference
     private List<Match> awayGames;
 
-    public Club(String clubName) {
+    public Club(String clubName, List<Player> players) {
         this.clubName = clubName;
+        this.games = 0;
+        this.points = 0;
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
+        this.players = players;
     }
 
     public Club (){}

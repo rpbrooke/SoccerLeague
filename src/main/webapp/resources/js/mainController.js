@@ -1,29 +1,32 @@
-angular.module('soccerLeague').controller('Controller', ['$scope', '$log', 'Factory', Controller]);
+angular.module('soccerLeague').controller('mainController', ['$scope', '$log', 'mainFactory', mainController]);
 
-function Controller($scope, $log, Factory) {
+function mainController($scope, $log, mainFactory) {
     "use strict";
-//rest of controller and model
-    $scope.players=[];
+// rest of controller and model
     $scope.teams=[];
     $scope.standing=[];
-
-
-$scope.retrieveTeamPlayers = function(){
-	$scope.players=[];
-    Factory.retrieveTeamPlayers($scope.team).then(
-        function mySuccess(response) {
-            angular.forEach(response.data, function(value){
-                $scope.players.push(value);
-            })
-    }).catch(function myError(response) {
-        $log.error(response.data);
-        $scope.players.push(response.statusText);
-    });
-}
+    
+    $scope.tabData = [
+    	 {
+    	     heading: 'League Info',
+    	     route: 'leagueInfo',
+    	     disabled: false
+    	 },
+    	 {
+    	     heading: 'Team Info',
+    	     route: 'teamInfo',
+    	     disabled: false
+    	 },
+    	 {
+    	     heading: 'Add Match',
+    	     route: 'addMatch',
+    	     disabled: false
+    	 }
+    	];
 
 $scope.retrieveTeams = function(){
     $scope.teams=[];
-    Factory.retrieveTeams().then(
+    mainFactory.retrieveTeams().then(
         function mySuccess(response) {
             angular.forEach(response.data, function(value){
                 $scope.teams.push(value);
@@ -36,7 +39,7 @@ $scope.retrieveTeams = function(){
 
 $scope.retrieveStandings = function(){
 	  $scope.standing=[];
-    Factory.retrieveStandings().then(
+    mainFactory.retrieveStandings().then(
         function mySuccess(response) {
             angular.forEach(response.data, function(value){
                 $scope.standing.push(value);
@@ -52,7 +55,7 @@ $scope.addMatch = function () {
         awayClub : $scope.awayClub,
         homeScore : $scope.homeScore,
         awayScore : $scope.awayScore};
-    Factory.addMatch(match).then(
+    mainFactory.addMatch(match).then(
         function mySuccess(response) {
             $scope.matchResponse = response.data.message;
         }).catch(function myError(response) {
@@ -64,7 +67,6 @@ $scope.addMatch = function () {
     $scope.awayClub = "";
     $scope.homeScore = "";
     $scope.awayScore = "";
-    $scope.retrieveTeams();
     $scope.retrieveStandings();
 }
 }

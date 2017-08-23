@@ -1,0 +1,52 @@
+<div>
+	<h4>
+		Enter Team Name: <input ng-model="team">
+		<button ng-click="retrieveStats()">Update Stats</button>
+	</h4>
+
+</div>
+<div class="panel-heading"
+	style="height: 7%; background-color: green; color: white;">
+	<h4>Teams</h4>
+</div>
+<div class="panel-body" style="height: 90%">
+	<table class="table table-bordered table-hover">
+		<tr>
+			<th>Home Score</th>
+			<th>Away Score</th>
+			<th>Away Club</th>
+		</tr>
+		<tr ng-repeat="h in homeGames">
+			<td>{{h.homeScore}}</td>
+			<td>{{h.awayScore}}</td>
+			<td>{{h.awayClub}}</td>
+		</tr>
+		<tr>
+			<th>Away Score</th>
+			<th>Home Score</th>
+			<th>Home Club</th>
+		</tr>
+		<tr ng-repeat="a in awayGames">
+			<td>{{a.homeScore}}</td>
+			<td>{{a.awayScore}}</td>
+			<td>{{a.homeClub}}</td>
+		</tr>
+	</table>
+</div>
+
+<div class="panel-heading"
+	style="height: 7%; background-color: blue; color: white;">
+	<h4>Players</h4>
+</div>
+<div class="panel-body" style="height: 90%">
+	<table class="table table-bordered table-hover">
+		<tr>
+			<th>Player Name</th>
+			<th>Player Number</th>
+		</tr>
+		<tr ng-repeat="p in players">
+			<td>{{p.playerName}}</td>
+			<td>{{p.playerNumber}}</td>
+		</tr>
+	</table>
+</div>

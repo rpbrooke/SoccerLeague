@@ -1,9 +1,9 @@
-INSERT INTO club (league_position, club_name, games_played, wins, losses, ties) VALUES
-  (1,'Arsenal',1,1,0,0),
-  (5,'Chelsea',2,0,2,0),
-  (1,'TeamSoloMid',1,1,0,0),
-  (1, 'Cloud9',2,1,1,0),
-  (1, 'SKTelecom',1,1,0,0);
+INSERT INTO club (points, club_name, games_played, wins, losses, ties) VALUES
+  (3,'Arsenal',1,1,0,0),
+  (0,'Chelsea',2,0,2,0),
+  (3,'TeamSoloMid',1,1,0,0),
+  (3, 'Cloud9',2,1,1,0),
+  (3, 'SKTelecom',1,1,0,0);
 
 INSERT INTO player (player_name, player_number, club_id) VALUES
   ('Tim', 12,'1'),

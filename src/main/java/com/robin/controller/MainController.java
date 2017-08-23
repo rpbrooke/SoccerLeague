@@ -26,7 +26,6 @@ public class MainController
 
     @RequestMapping(method = RequestMethod.GET, value = "/getTeamPlayers", params = "teamName")
     ResponseEntity<List<Player>> getTeamPlayers(@RequestParam("teamName") String teamName) {
-      System.out.println("test");
     	List<Player> result = dbService.getTeamPlayers(teamName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -34,6 +33,12 @@ public class MainController
     @RequestMapping(method = RequestMethod.GET, value = "/getTeams")
     ResponseEntity<List<Club>> getTeams() {
         List<Club> result = dbService.getTeams();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/getTeamStats", params = "teamName")
+    ResponseEntity<Map<String, List<MatchDTO>>> getTeamStats(@RequestParam("teamName") String teamName) {
+    	Map<String, List<MatchDTO>> result = dbService.getTeamStats(teamName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -44,9 +49,9 @@ public class MainController
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/recordMatch")
-    ResponseEntity<Map> recordMatch(@RequestBody MatchDTO match ) {
+    ResponseEntity<Map<String, String>> recordMatch(@RequestBody MatchDTO match ) {
         String result = dbService.recordMatch(match);
-        Map map = Collections.singletonMap("message", result);
+        Map<String, String> map = Collections.singletonMap("message", result);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

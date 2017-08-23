@@ -1,27 +1,31 @@
-angular.module('soccerLeague').factory('Factory', ['$http', Factory]);
+angular.module('soccerLeague').factory('mainFactory', ['$http', mainFactory]);
 
-function Factory($http){
+function mainFactory($http){
     "use strict";
 
-    var Factory = {}
+    var mainFactory = {}
 
-    Factory.retrieveTeamPlayers = function(team){
+    mainFactory.retrieveTeamPlayers = function(team){
         return $http.get("soccerLeague/getTeamPlayers/?teamName="+team);
     }
 
-    Factory.retrieveTeams = function(){
+    mainFactory.retrieveTeams = function(){
         return $http.get("soccerLeague/getTeams");
     }
+    
+    mainFactory.retrieveTeamStats = function(team){
+        return $http.get("soccerLeague/getTeamStats/?teamName="+team);
+    }
 
-    Factory.retrieveStandings = function(){
+    mainFactory.retrieveStandings = function(){
         return $http.get("soccerLeague/getStandings");
     }
 
-    Factory.addMatch = function(match){
+    mainFactory.addMatch = function(match){
         return $http.post("soccerLeague/recordMatch", match);
     }
 
-    return Factory;
+    return mainFactory;
 
 
 }

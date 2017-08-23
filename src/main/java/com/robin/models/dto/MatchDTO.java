@@ -6,6 +6,15 @@ public class MatchDTO {
     private int homeScore;
     private int awayScore;
 
+    public MatchDTO(String homeClub, String awayClub, int homeScore, int awayScore) {
+		this.homeClub = homeClub;
+		this.awayClub = awayClub;
+		this.homeScore = homeScore;
+		this.awayScore = awayScore;
+	}
+
+	public MatchDTO() {}
+    
     public String getHomeClub() {
         return homeClub;
     }
@@ -37,4 +46,12 @@ public class MatchDTO {
     public void setAwayScore(int awayScore) {
         this.awayScore = awayScore;
     }
+
+	@Override
+	public String toString() {
+		return "MatchDTO [homeClub=" + homeClub + ", awayClub=" + awayClub + ", homeScore=" + homeScore + ", awayScore="
+				+ awayScore + "]";
+	}
+    
+    
 }

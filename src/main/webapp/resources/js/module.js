@@ -1,1 +1,1 @@
-angular.module('soccerLeague',[]);
+angular.module('soccerLeague',[ 'ui.router' ]);

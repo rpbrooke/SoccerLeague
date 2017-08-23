@@ -11,7 +11,10 @@ import com.robin.models.repository.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DatabaseService {
@@ -32,6 +35,17 @@ public class DatabaseService {
         System.out.println("getTeamPlayers");
         Club club = clubDao.findByClubName(team);
         return club.getPlayers();
+    }
+    
+    public Map<String, List<MatchDTO>> getTeamStats(String team) {
+    	System.out.println("getTeamStats");
+    	Map<String, List<MatchDTO>> teamStatsMap = new HashMap<>();
+    	Club club = clubDao.findByClubName(team);
+    	List<MatchDTO> homeGames = convertToMatchDTO(club.getHomeGames());
+    	List<MatchDTO> awayGames = convertToMatchDTO(club.getAwayGames());
+    	teamStatsMap.put("homeGames", homeGames);
+    	teamStatsMap.put("awayGames", awayGames);
+    	return teamStatsMap;
     }
 
     public List<Club> getTeams() {
@@ -54,6 +68,18 @@ public class DatabaseService {
         return "Match has been successfully added.";
     }
 
+    private List<MatchDTO> convertToMatchDTO (List<Match> matches){
+    	List<MatchDTO> result = new ArrayList<>();
+    	for (Match match : matches) {
+			String homeClub = match.getHomeClub().getClubName();
+			String awayClub = match.getAwayClub().getClubName();
+			int homeScore = match.getHomeScore();
+			int awayScore = match.getAwayScore();
+			result.add(new MatchDTO(homeClub, awayClub, homeScore, awayScore));
+		}
+    	return result;
+    }
+    
     private void updateClubs(Club homeClub, Club awayClub, int homeScore, int awayScore) {
         int result = Integer.compare(homeScore, awayScore);
         if (result == 0) {
