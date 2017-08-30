@@ -12,18 +12,22 @@ angular.module('soccerLeague').config(function ($stateProvider, $urlRouterProvid
 		templateUrl : 'resources/html/team.html',
 		controller : 'teamController'
 	})
-	.state("otherwise", {
-		url : "*path",
-		templateUrl: 'resources/html/league.html'
-	});
-//	$routeProvider.when('/home', {
-//		templateUrl : 'resources/html/league.html'
-//	}).when('/match', {
-//		templateUrl : 'resources/html/match.html'
-//	}).when('/team', {
-//		templateUrl : 'resources/html/team.html',
-//		controller : 'teamController'
-//	}).otherwise({
-//		redirectTo: '/home'
-//	});
+//	.state("otherwise", {
+//		url : "*path",
+//		templateUrl: 'resources/html/league.html'
+//	})
+	;
+
 });
+
+//ng-Route method
+//$routeProvider.when('/home', {
+//templateUrl : 'resources/html/league.html'
+//}).when('/match', {
+//templateUrl : 'resources/html/match.html'
+//}).when('/team', {
+//templateUrl : 'resources/html/team.html',
+//controller : 'teamController'
+//}).otherwise({
+//redirectTo: '/home'
+//});

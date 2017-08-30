@@ -11,8 +11,8 @@ function mainController($scope, $log, mainFactory) {
     	     heading: 'League Info',
     	     route: 'leagueInfo',
     	     disabled: false
-    	 },
-    	 {
+    	 }, 
+    	{
     	     heading: 'Team Info',
     	     route: 'teamInfo',
     	     disabled: false

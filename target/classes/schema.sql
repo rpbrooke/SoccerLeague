@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS club
 ( club_id int(1) not null AUTO_INCREMENT,
   club_name VARCHAR(25) not null,
   games_played int(2),
-  league_position int(1) not null,
+  points int(2) not null,
   wins int(2) not null,
   losses int(2) not null,
   ties int(2) not null,

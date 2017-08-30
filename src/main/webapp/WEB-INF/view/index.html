@@ -27,18 +27,16 @@
 
 <body>
 	<div ng-app="soccerLeague" ng-controller="mainController">
-	<nav class="navbar navbar-default">
-	   <div class="navbar-header">
-<uib-tabset>
-    <uib-tab index="$index + 1" ng-repeat="tab in tabData" disable="tab.disabled" style="width:30%; height:100%;">
-      <uib-tab-heading >
-         <span class="label label-primary" ui-sref="{{tab.route}}">{{tab.heading}}</span>  
-      </uib-tab-heading>
-    </uib-tab>
-</uib-tabset>
-</div>
-</nav>
-	<div ui-view></div>
+		<div class="navbar">
+		<uib-tabset> 
+		<uib-tab index="$index + 1"	ng-repeat="tab in tabData" disable="{{tab.disabled}}">
+		<uib-tab-heading>
+		<a class="label label-primary"	ui-sref="{{tab.route}}">{{tab.heading}}</a> 
+		</uib-tab-heading> 
+		</uib-tab>
+		 </uib-tabset>
+		 <div>
+		<div ui-view></div>
 	</div>
 </body>
 </html>
